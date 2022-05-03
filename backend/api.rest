@@ -2,3 +2,11 @@
 GET http://localhost:4000/api/employees
 ###
 POST http://localhost:4000/api/employees
+Content-Type: application/json
+{
+    "name": "Narhen Diaz",
+    "position": "Snr Developer",
+    "office": "Medellin",
+    "salary": 50000
+
+}
