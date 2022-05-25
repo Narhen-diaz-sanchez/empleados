@@ -12,10 +12,11 @@ const employeeSchema = new Schema({
         type: String,
         required: true
     },
-    office: {
-        type: String,
-        required: true
-    },
+    office: [
+        { 
+            type: Schema.Types.ObjectId,
+            ref: 'Office'
+        }],
     salary: {
         type: Number,
         required: true

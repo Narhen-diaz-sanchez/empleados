@@ -1,5 +1,6 @@
 const employeeCont = {}
 const Employee = require("../models/employee");
+const Office = require("../models/office");
 
 employeeCont.getEmployees = async (req, res, next) => {
     const employees = await Employee.find();
@@ -7,12 +8,13 @@ employeeCont.getEmployees = async (req, res, next) => {
 };
 
 employeeCont.createEmployee = async (req, res, next) => {
+    const off = await Office.findById(req.body.office)
     const employee = new Employee({
         name: req.body.name,
         position: req.body.position,
-        office: req.body.office,
         salary: req.body.salary,
     });
+    employee.office = off;
     await employee.save();
     res.json({
         status: "Employee created"
@@ -23,7 +25,7 @@ employeeCont.getEmployee = async (req, res, next) => {
     const {
         id
     } = req.params;
-    const employee = await Employee.findById(id);
+    const employee = await Employee.findById(id).populate("oficce");
     res.json(employee);
 };
 

@@ -11,4 +11,5 @@ app.use(express.urlencoded({
 }))
 
 app.use("/api/employees", require('./routes/employees.routes'))
+app.use("/api/office", require('./routes/office.routes'))
 module.exports = app;
